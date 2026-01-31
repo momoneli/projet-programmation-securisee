@@ -1,31 +1,44 @@
-import express from 'express';
-import session from 'express-session';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import MySQLStore from 'express-mysql-session';
+// Dépendances principales
+import express from 'express'; // Framework API
+import session from 'express-session'; // Gestion des sessions côté serveur
+import dotenv from 'dotenv'; // Variables d’environnement
+import cors from 'cors'; // Contrôle des accès frontend → backend
+import sessionStore from './config/sessionStore.js';
 
+// Routes d’authentification
+import authRoutes from './routes/auth.routes.js';
+
+// Chargement des variables .env
 dotenv.config();
+
+// Initialisation de l’application Express
 const app = express();
 
+// Permet de lire les requêtes JSON (req.body)
 app.use(express.json());
 
+// Autorise uniquement le frontend React local à appeler l’API
+// Les cookies sont nécessaires pour les sessions
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
   credentials: true
 }));
 
-const sessionStore = new MySQLStore({}, db);
-
+// Sessions stockées côté serveur (MySQL)
 app.use(session({
-  name: 'secure_session',
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: sessionStore,
-  cookie: {
-    httpOnly: true,
-    sameSite: 'strict'
-  }
+name: 'secure_session',
+secret: process.env.SESSION_SECRET,
+resave: false,
+saveUninitialized: false,
+store: sessionStore,
+cookie: {
+httpOnly: true, // Protège contre l’accès JS (XSS)
+secure: false,
+sameSite: 'strict' // Réduit fortement les risques CSRF
+}
 }));
+
+// Routes liées à l’authentification
+app.use('/api/auth', authRoutes);
 
 export default app;
