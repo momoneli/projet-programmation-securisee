@@ -27,15 +27,17 @@ app.use(cors({
 // Sessions stockées côté serveur (MySQL)
 app.use(session({
 name: 'secure_session',
-secret: process.env.SESSION_SECRET,
+secret: process.envss.SESSION_SECRET,
 resave: false,
 saveUninitialized: false,
 store: sessionStore,
 cookie: {
-httpOnly: true, // Protège contre l’accès JS (XSS)
-secure: false,
-sameSite: 'strict' // Réduit fortement les risques CSRF
+  httpOnly: true,
+  secure: false,       // true en HTTPS (prod)
+  sameSite: 'lax',
+  maxAge: 30 * 60 * 1000 // 30 min
 }
+
 }));
 
 // Routes liées à l’authentification
