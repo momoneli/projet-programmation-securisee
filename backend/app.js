@@ -5,6 +5,8 @@ import dotenv from 'dotenv'; // Variables d’environnement
 import cors from 'cors'; // Contrôle des accès frontend → backend
 import sessionStore from './config/sessionStore.js';
 
+
+
 // Routes d’authentification
 import authRoutes from './routes/auth.routes.js';
 
@@ -27,7 +29,7 @@ app.use(cors({
 // Sessions stockées côté serveur (MySQL)
 app.use(session({
 name: 'secure_session',
-secret: process.envss.SESSION_SECRET,
+secret: process.env.SESSION_SECRET,
 resave: false,
 saveUninitialized: false,
 store: sessionStore,
@@ -40,7 +42,13 @@ cookie: {
 
 }));
 
+
 // Routes liées à l’authentification
+// Route GET publique (sans auth) – avant /api/auth pour éviter 401
+app.get('/', (req, res) => {
+  res.json({ message: 'Backend OK' });
+});
+
 app.use('/api/auth', authRoutes);
 
 export default app;

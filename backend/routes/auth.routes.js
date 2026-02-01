@@ -34,13 +34,14 @@ router.post('/register',
       // Réponse de succès au frontend
       res.status(201).json({ message: 'Utilisateur créé' });
     } catch (err) {
-      // Log serveur et réponse générique pour ne pas révéler d’infos sensibles
-      console.error(err);
-      res.status(500).json({ message: 'Erreur serveur' });
-    }
-  }
-);
-    
+        if (err.code === 'ER_DUP_ENTRY') {
+          return res.status(409).json({ message: 'Email déjà utilisé' });
+        }
+        console.error(err);
+        res.status(500).json({ message: 'Erreur serveur' });
+      }
+    });
+
 
 // POST /api/auth/login
 router.post('/login', async (req, res) => {
@@ -52,6 +53,7 @@ router.post('/login', async (req, res) => {
       'SELECT * FROM users WHERE email = ?',
       [email]
     );
+  
 
     // Si utilisateur non trouvé, renvoie erreur générique
     if (rows.length === 0) {
@@ -81,5 +83,29 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Erreur serveur' });
   }
 });
+
+
+// GET /api/auth/me
+router.get('/me', (req, res) => {
+    if (!req.session || !req.session.user) {
+      return res.status(401).json({ message: 'Non authentifié' });
+    }
+    return res.json({ user: req.session.user });
+  });
+
+// POST /api/auth/logout
+router.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Erreur serveur' });
+      }
+      // Remplace 'secure_session' si tu as défini un autre cookie name dans app.js
+      res.clearCookie('secure_session');
+      return res.json({ message: 'Déconnexion réussie' });
+    });
+  });
+  
+
 
 export default router;
