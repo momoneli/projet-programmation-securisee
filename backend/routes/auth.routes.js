@@ -92,6 +92,10 @@ router.get('/me', requireAuth, (req, res) => {
   return res.json({ user: req.session.user });
 });
 
+// GET /api/auth/admin/test
+router.get('/admin/test', requireRole('admin'), (req, res) => {
+  res.json({ message: 'Zone admin OK' });
+});
 
 // POST /api/auth/logout
 router.post('/logout', (req, res) => {
