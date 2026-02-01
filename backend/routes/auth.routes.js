@@ -1,4 +1,5 @@
 // Création du routeur Express pour gérer les routes d'authentification
+import { requireAuth, requireRole } from '../middlewares/auth.middleware.js';
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { body, validationResult } from 'express-validator';
@@ -85,13 +86,12 @@ router.post('/login', async (req, res) => {
 });
 
 
+
 // GET /api/auth/me
-router.get('/me', (req, res) => {
-    if (!req.session || !req.session.user) {
-      return res.status(401).json({ message: 'Non authentifié' });
-    }
-    return res.json({ user: req.session.user });
-  });
+router.get('/me', requireAuth, (req, res) => {
+  return res.json({ user: req.session.user });
+});
+
 
 // POST /api/auth/logout
 router.post('/logout', (req, res) => {
