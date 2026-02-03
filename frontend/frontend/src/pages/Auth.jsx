@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { login, register, getMe, health } from "../api";
-
+import "../style/Auth.css";
 // Page Auth : login + register + test API
 function Auth() {
   const [mode, setMode] = useState("login");
