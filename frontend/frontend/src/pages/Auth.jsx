@@ -52,31 +52,33 @@ function Auth() {
   };
 
   return (
-    <section className="card">
-      <h1>Secure Basket</h1>
+    <section className="auth">
+      <h1>Authentification</h1>
 
-      <div className="tabs">
+      <div className="auth-tabs">
         <button
-          className={mode === "login" ? "tab active" : "tab"}
+          className={mode === "login" ? "active" : ""}
           onClick={() => setMode("login")}
         >
           Connexion
         </button>
         <button
-          className={mode === "register" ? "tab active" : "tab"}
+          className={mode === "register" ? "active" : ""}
           onClick={() => setMode("register")}
         >
           Inscription
         </button>
       </div>
 
-      <p className="api-status">API : {apiStatus}</p>
+      <p className={`auth-api ${apiStatus === "KO" ? "auth-api--ko" : ""}`}>
+        API : {apiStatus}
+      </p>
 
       {message.text && (
-        <div className={`notice ${message.type}`}>{message.text}</div>
+        <div className={`auth-message ${message.type}`}>{message.text}</div>
       )}
 
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="email"
           placeholder="Email"
@@ -93,12 +95,12 @@ function Auth() {
           required
         />
 
-        <button type="submit">
+        <button type="submit" className="auth-btn">
           {mode === "login" ? "Se connecter" : "Créer un compte"}
         </button>
       </form>
 
-      <button className="btn ghost" onClick={handleMe}>
+      <button type="button" className="auth-btn secondary" onClick={handleMe}>
         Tester /me
       </button>
     </section>
