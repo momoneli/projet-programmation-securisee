@@ -12,12 +12,7 @@ function Auth() {
   const show = (type, text) => setMessage({ type, text });
 
   // Vérifie si l'API est joignable au chargement
-  useEffect(() => {
-    (async () => {
-      const r = await health();
-      setApiStatus(r.ok ? "OK" : "KO");
-    })();
-  }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +48,7 @@ function Auth() {
 
   return (
     <section className="auth">
-      <h1>Authentification</h1>
+      <h1>Application d'authentification sécurisée</h1>
 
       <div className="auth-tabs">
         <button
@@ -70,9 +65,7 @@ function Auth() {
         </button>
       </div>
 
-      <p className={`auth-api ${apiStatus === "KO" ? "auth-api--ko" : ""}`}>
-        API : {apiStatus}
-      </p>
+      
 
       {message.text && (
         <div className={`auth-message ${message.type}`}>{message.text}</div>
