@@ -41,3 +41,7 @@ export const getMe = (token) =>
     headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
 
+export const health = () =>
+  apiFetch("/health", {
+    method: "GET",
+  });
