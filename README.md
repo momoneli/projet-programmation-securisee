@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 # 🔐 Application d’authentification sécurisée  
 **Projet scolaire – ESAIP | Programmation sécurisée**
 
 ---
+=======
+# Application d’authentification sécurisée  
+Projet ESAIP – Programmation sécurisée
+>>>>>>> 52c4f8a (Comments added to Auth.jsx)
 
 ## 1. Contexte
 
@@ -25,9 +30,16 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 - `express-validator`
 - `cors`
 
+<<<<<<< HEAD
 ### Frontend
 - ReactJS (Vite)
 - Appels HTTP vers l’API avec gestion du cookie de session
+=======
+**Frontend**
+
+- ReactJS (Vite)
+- Appels HTTP vers l’API, avec gestion du cookie de session.
+>>>>>>> 52c4f8a (Comments added to Auth.jsx)
 
 ---
 
@@ -44,11 +56,18 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 │   │   └── auth.routes.js          # Routes d’authentification
 │   ├── sql/
 │   ├── .env                        # Variables d’environnement
+<<<<<<< HEAD
 │   ├── app.js                      # Configuration Express (CORS, sessions, routes)
 │   ├── server.js                   # Point d’entrée du serveur
 │   ├── package.json
 │   └── package-lock.json
 │
+=======
+│   ├── app.js                      # App Express (CORS, sessions, routes)
+│   ├── server.js                   # Point d’entrée serveur
+│   ├── package.json
+│   └── package-lock.json
+>>>>>>> 52c4f8a (Comments added to Auth.jsx)
 ├── frontend/
 │   ├── public/
 │   │   └── vite.svg                # Ressources publiques
@@ -72,6 +91,7 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 - Tests XSS
 - Tests CSRF
 
+<<<<<<< HEAD
 ### Preuves techniques
 - Captures d’écran
 - Requêtes réalisées via Postman
@@ -79,6 +99,25 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 ### Recommandations de correction
 - Analyse des vulnérabilités identifiées
 - Propositions de corrections adaptées
+=======
+## ✅ Checklist des livrables – Analyse de sécurité
+
+- **Rapport de tests de sécurité**
+  - Tests d’injection SQL
+  - Tests XSS
+  - Tests CSRF
+
+- **Preuves techniques**
+  - Captures d’écran
+  - Requêtes réalisées via Postman
+
+- **Recommandations de correction**
+  - Analyse des vulnérabilités identifiées
+  - Propositions de corrections adaptées
+
+- **Rapport de re-tests**
+  - Vérification de la correction des failles après mise à jour
+>>>>>>> 52c4f8a (Comments added to Auth.jsx)
 
 ### Rapport de re-tests
 - Vérification de la correction des failles après mise à jour

@@ -1,0 +1,95 @@
+/* Conteneur principal de la page Auth */
+.auth {
+    width: 100%;
+    max-width: 480px;
+    background: #171a21;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 60px;
+    color: #e7e9ee;
+    margin: auto;
+  }
+  
+  /* Titre */
+  .auth h1 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  /* Onglets login / register */
+  .auth-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  
+  .auth-tabs button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #2a2f3a;
+    background: transparent;
+    color: #aab0bf;
+    cursor: pointer;
+  }
+  
+  .auth-tabs .active {
+    background: #2f6fed;
+    color: #fff;
+    border-color: #2f6fed;
+  }
+  
+ 
+  
+  /* Messages */
+  .auth-message {
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  
+  .auth-message.ok {
+    background: rgba(57, 217, 138, 0.15);
+    border: 1px solid rgba(57, 217, 138, 0.4);
+  }
+  
+  .auth-message.error {
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+  }
+  
+  /* Formulaire */
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .auth-form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0f1115;
+    color: #fff;
+  }
+  
+  .auth-form input:focus {
+    outline: 1px solid #2f6fed;
+  }
+  
+  /* Boutons */
+  .auth-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #2f6fed;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .auth-btn.secondary {
+    margin-top: 10px;
+    background: #2a2f3a;
+  }

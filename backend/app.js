@@ -43,7 +43,7 @@ cookie: {
 }));
 
 
-// Routes liées à l’authentification
+
 // Route GET publique (sans auth) – avant /api/auth pour éviter 401
 app.get('/', (req, res) => {
   res.json({ message: 'Backend OK' });
