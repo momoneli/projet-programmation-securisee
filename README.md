@@ -65,12 +65,6 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 │   └── package-lock.json
 ```
 
-## 4. Checklist des livrables – Analyse de sécurité
-
-### Rapport de tests de sécurité
-- Tests d’injection SQL
-- Tests XSS
-- Tests CSRF
 
 ## ✅ Checklist des livrables – Analyse de sécurité
 
@@ -89,6 +83,3 @@ Projet réalisé dans le cadre du module de **Programmation sécurisée** à l�
 
 - **Rapport de re-tests**
   - Vérification de la correction des failles après mise à jour
-
-### Rapport de re-tests
-- Vérification de la correction des failles après mise à jour
