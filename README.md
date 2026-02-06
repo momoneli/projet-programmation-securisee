@@ -1,6 +1,6 @@
 # 🔐 Application d’authentification sécurisée  
 **Projet scolaire – ESAIP | Programmation sécurisée**
-AGAMAKA MONELI IRA5
+AGAMAKA MONELI IRA5 & Mandengue NJIME AKWA
 ---
 
 ## 1. Contexte
